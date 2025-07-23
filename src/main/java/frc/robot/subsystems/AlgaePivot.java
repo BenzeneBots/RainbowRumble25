@@ -66,28 +66,9 @@ public class AlgaePivot extends SubsystemBase{
         return spin.spinUp(algaePivotMotor, 0.1);
     }
     public Command down(){
-        return spin.spinUp(algaePivotMotor, 0.1);
+        return spin.spinUp(algaePivotMotor, 0.2);
     }
 
-   /* public Command setPosition(double Position){
-        return new Command(){
-            Timer timer = new Timer();
-            @Override
-            public void initialize(){
-                super.initialize();
-                timer.start();
-            }
-            @Override
-            public void execute(){
-                algaePivotMotor.setControl(controller.withSlot(0).withPosition(Position));
-            }
-            @Override
-            public boolean isFinished(){
-                return timer.get() > 1.0;
-            }
-
-        };
-    }*/
 
 
 }
