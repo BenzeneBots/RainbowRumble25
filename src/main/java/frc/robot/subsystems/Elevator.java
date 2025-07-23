@@ -15,25 +15,25 @@ import frc.robot.RobotConstants.AlgaePivotConstants;
 //import edu.wpi.first.wpilibj.Timer;
 
 
-public class AlgaePivot extends SubsystemBase{
-    private final TalonFX algaePivotMotor;
+public class Elevator extends SubsystemBase{
+    private final TalonFX elevatorMotor;
     private final MotionMagicVoltage controller;
     private double resetPos = 0.0;
     private final SetPosition setPos;
     private final Move spin;
-    public AlgaePivot(){
+    public Elevator(){
         spin = new Move();
         setPos = new SetPosition();
-        algaePivotMotor = new TalonFX(59);
+        elevatorMotor = new TalonFX(60);
         controller = new MotionMagicVoltage(0);
         resetPosition();
         configueMotor();
     }
     public void resetPosition(){
-        this.resetPos = algaePivotMotor.getPosition().getValueAsDouble();
+        this.resetPos = elevatorMotor.getPosition().getValueAsDouble();
     }
     public void configueMotor(){
-        algaePivotMotor.clearStickyFaults();
+        elevatorMotor.clearStickyFaults();
         TalonFXConfiguration config = new TalonFXConfiguration();
 
         config.Slot0.GravityType = GravityTypeValue.Arm_Cosine;
@@ -52,42 +52,21 @@ public class AlgaePivot extends SubsystemBase{
         config.SoftwareLimitSwitch.ForwardSoftLimitThreshold = this.resetPos + 4;
         config.SoftwareLimitSwitch.ReverseSoftLimitThreshold = this.resetPos;
 
-        algaePivotMotor.getConfigurator().apply(config);
+        elevatorMotor.getConfigurator().apply(config);
 
     }
     public Command positionOne(){
-        return setPos.setPosition(AlgaePivotConstants.positionOne, algaePivotMotor, controller);
+        return setPos.setPosition(AlgaePivotConstants.positionOne, elevatorMotor, controller);
     }
 
     public Command positionTwo(){
-        return setPos.setPosition(AlgaePivotConstants.postionTwo, algaePivotMotor, controller);
+        return setPos.setPosition(AlgaePivotConstants.postionTwo, elevatorMotor, controller);
     }
     public Command up(){
-        return spin.spinUp(algaePivotMotor, 0.1);
+        return spin.spinUp( elevatorMotor,0.1);
     }
     public Command down(){
-        return spin.spinUp(algaePivotMotor, 0.1);
+        return spin.spinUp(elevatorMotor, 0.1);
     }
-
-   /* public Command setPosition(double Position){
-        return new Command(){
-            Timer timer = new Timer();
-            @Override
-            public void initialize(){
-                super.initialize();
-                timer.start();
-            }
-            @Override
-            public void execute(){
-                algaePivotMotor.setControl(controller.withSlot(0).withPosition(Position));
-            }
-            @Override
-            public boolean isFinished(){
-                return timer.get() > 1.0;
-            }
-
-        };
-    }*/
-
 
 }

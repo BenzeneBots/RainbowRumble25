@@ -1,24 +1,20 @@
 package frc.robot.subsystems;
+import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.spark.SparkFlex;
-import edu.wpi.first.wpilibj.drive.RobotDriveBase.MotorType;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Commands.Move;
 import frc.robot.Commands.MoveSpark;
-import com.revrobotics.RelativeEncoder;
-import com.revrobotics.jni.CANSparkJNI;
-import com.revrobotics.spark.config.SparkBaseConfig;
-import com.revrobotics.spark.config.SparkFlexConfigAccessor;
-import edu.wpi.first.wpilibj.DriverStation;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-public class AlgaeSpinner extends SubsystemBase{
-    private final SparkFlex algaeSpinner = new SparkFlex(23, MotorType.kBrushless);
-    private final MoveSpark spinSpark = new MoveSpark();
-    public AlgaeSpinner(){}    
+public class CoralSpinner extends SubsystemBase{
+    private final TalonFX coralSpinner = new TalonFX(55, "BB_CANIVORE");
+    private final Move spin = new Move();
+    public CoralSpinner(){}    
     public Command intake(){
-        return spinSpark.spinUp(algaeSpinner, 0.1);
+        return spin.spinUp(coralSpinner, 0.1);
     }
 
     public Command outtake(){
-        return spinSpark.spinDown(algaeSpinner, 0.1);
+        return spin.spinDown(coralSpinner, 0.1);
     }
 }
