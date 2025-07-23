@@ -39,8 +39,9 @@ public class RobotContainer {
     private final Joystick xBox = new Joystick(1);
     private final JoystickButton algaeUp = new JoystickButton(xBox, 1);
     private final JoystickButton algaeDown = new JoystickButton(xBox, 2);
-    private final JoystickButton algaePosOne = new JoystickButton(xBox, 3);
-    private final JoystickButton algaePosTwo = new JoystickButton(xBox, 4);
+    private final JoystickButton algaeReach= new JoystickButton(xBox, 3);
+    private final JoystickButton algaeScore = new JoystickButton(xBox, 4);
+    private final JoystickButton algaeStow = new JoystickButton(xBox, 5);
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
@@ -83,8 +84,7 @@ public class RobotContainer {
         //xBox Button Configuration
         algaeUp.whileTrue(m_AlgaePivot.up());
         algaeDown.whileTrue(m_AlgaePivot.down());
-        algaePosOne.onTrue(m_AlgaePivot.positionOne());
-        algaePosTwo.onTrue(m_AlgaePivot.positionTwo());
+        algaeReach.onTrue(m_AlgaePivot.Reach());
     }
 
     public Command getAutonomousCommand() {

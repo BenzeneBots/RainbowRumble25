@@ -6,6 +6,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.RobotConstants.CoralPivotConstants;
 import frc.robot.Commands.SetPosition;
 
 public class CoralPivot {
@@ -46,8 +47,18 @@ public class CoralPivot {
         coralPivotMotor.getConfigurator().apply(config);
 
     }
-    public Command coralPosOne(){
-        return setPos.setPosition(10,coralPivotMotor, controller);
+    public Command Funnel(){
+        return setPos.setPosition(CoralPivotConstants.Funnel, coralPivotMotor, controller);
+    }
+
+    public Command lOne(){
+        return setPos.setPosition(CoralPivotConstants.lOne, coralPivotMotor, controller);
+    }
+    public Command lTwo(){
+        return setPos.setPosition(CoralPivotConstants.lTwo,coralPivotMotor, controller);
+    }
+    public Command lThree(){
+        return setPos.setPosition(CoralPivotConstants.lThree, coralPivotMotor, controller);
     }
     
 }

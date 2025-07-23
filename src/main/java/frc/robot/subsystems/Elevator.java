@@ -13,6 +13,7 @@ import frc.robot.Commands.Move;
 import frc.robot.Commands.SetPosition;
 import frc.robot.RobotConstants.AlgaePivotConstants;
 //import edu.wpi.first.wpilibj.Timer;
+import frc.robot.RobotConstants.ElevatorConstants;
 
 
 public class Elevator extends SubsystemBase{
@@ -55,12 +56,18 @@ public class Elevator extends SubsystemBase{
         elevatorMotor.getConfigurator().apply(config);
 
     }
-    public Command positionOne(){
-        return setPos.setPosition(AlgaePivotConstants.positionOne, elevatorMotor, controller);
+    public Command Funnel(){
+        return setPos.setPosition(ElevatorConstants.Funnel, elevatorMotor, controller);
     }
 
-    public Command positionTwo(){
-        return setPos.setPosition(AlgaePivotConstants.postionTwo, elevatorMotor, controller);
+    public Command lOne(){
+        return setPos.setPosition(ElevatorConstants.lOne, elevatorMotor, controller);
+    }
+    public Command lTwo(){
+        return setPos.setPosition(ElevatorConstants.lTwo, elevatorMotor, controller);
+    }
+    public Command lThree(){
+        return setPos.setPosition(ElevatorConstants.lThree, elevatorMotor, controller);
     }
     public Command up(){
         return spin.spinUp( elevatorMotor,0.1);

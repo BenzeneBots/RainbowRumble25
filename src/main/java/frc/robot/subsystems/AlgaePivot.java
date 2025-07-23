@@ -55,12 +55,14 @@ public class AlgaePivot extends SubsystemBase{
         algaePivotMotor.getConfigurator().apply(config);
 
     }
-    public Command positionOne(){
-        return setPos.setPosition(AlgaePivotConstants.positionOne, algaePivotMotor, controller);
+    public Command Stow(){
+        return setPos.setPosition(AlgaePivotConstants.Score, algaePivotMotor, controller);
     }
-
-    public Command positionTwo(){
-        return setPos.setPosition(AlgaePivotConstants.postionTwo, algaePivotMotor, controller);
+    public Command Reach(){
+        return setPos.setPosition(AlgaePivotConstants.Reach, algaePivotMotor, controller);
+    }
+    public Command Score(){
+        return setPos.setPosition(AlgaePivotConstants.Score, algaePivotMotor, controller);
     }
     public Command up(){
         return spin.spinUp(algaePivotMotor, 0.1);
