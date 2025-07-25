@@ -7,6 +7,7 @@ import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Commands.Move;
@@ -69,11 +70,19 @@ public class Elevator extends SubsystemBase{
     public Command lThree(){
         return setPos.setPosition(ElevatorConstants.lThree, elevatorMotor, controller);
     }
+    public Command HPS(){
+        return setPos.setPosition(ElevatorConstants.HPS, elevatorMotor, controller);
+    }
     public Command up(){
         return spin.spinUp( elevatorMotor,0.1);
     }
     public Command down(){
         return spin.spinUp(elevatorMotor, 0.1);
+    }
+
+        @Override
+    public void periodic(){
+        SmartDashboard.putNumber("ElevatorPiv", elevatorMotor.getPosition().getValueAsDouble());
     }
 
 }

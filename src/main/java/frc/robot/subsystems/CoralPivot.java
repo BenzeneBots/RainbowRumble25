@@ -5,17 +5,22 @@ import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotConstants.CoralPivotConstants;
+import frc.robot.Commands.Move;
 import frc.robot.Commands.SetPosition;
 
-public class CoralPivot {
+public class CoralPivot extends SubsystemBase{
     private final SetPosition setPos;
+    private final Move move;
     private final TalonFX coralPivotMotor;
     private final MotionMagicVoltage controller;
     private double pos = 0.0;
     public CoralPivot (){
         setPos = new SetPosition();
+        move = new Move();
         coralPivotMotor = new TalonFX(60,"BB_CANIVORE");
         controller = new MotionMagicVoltage(0);
         resetPos();
@@ -59,6 +64,21 @@ public class CoralPivot {
     }
     public Command lThree(){
         return setPos.setPosition(CoralPivotConstants.lThree, coralPivotMotor, controller);
+    }
+    public Command HPS(){
+        return setPos.setPosition(CoralPivotConstants.HPS, coralPivotMotor, controller);
+    }
+
+    public Command Up(){
+        return move.spinUp(coralPivotMotor, 0.1);
+    }
+    public Command Down(){
+        return move.spinUp(coralPivotMotor, 0.1);
+    }
+
+    @Override
+    public void periodic(){
+        SmartDashboard.putNumber("CoralPiv", coralPivotMotor.getPosition().getValueAsDouble());
     }
     
 }

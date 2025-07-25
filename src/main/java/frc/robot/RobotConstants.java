@@ -20,12 +20,14 @@ public class RobotConstants {
         public static final double lOne = 0.0;
         public static final double lTwo = 0.0;
         public static final double lThree = 0.0;
+        public static final double HPS = 0.0;
     }
     public static class ElevatorConstants{
         public static final double Funnel = 0.0;
         public static final double lOne = 0.0;
         public static final double lTwo = 0.0;
         public static final double lThree = 0.0;
+        public static final double HPS = 0.0;
         
     }
 

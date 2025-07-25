@@ -7,6 +7,7 @@ import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Commands.Move;
@@ -69,6 +70,12 @@ public class AlgaePivot extends SubsystemBase{
     }
     public Command down(){
         return spin.spinUp(algaePivotMotor, 0.2);
+    }
+    
+
+    @Override
+    public void periodic(){
+        SmartDashboard.putNumber("AlgaePiv", algaePivotMotor.getPosition().getValueAsDouble());
     }
 
 
